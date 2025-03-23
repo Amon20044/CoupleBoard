@@ -1,6 +1,8 @@
+import { response } from 'express';
 import { createAlbum, getAlbumsByUser } from '../models/albumModel.js';
 import { uploadToCloudinary } from '../utils/cloudinary.js';
 import { getMediaType } from '../utils/fileTypeChecker.js';
+import { resolve } from 'path';
 
 const createNewAlbum = async (req, res) => {
   try {
@@ -17,13 +19,13 @@ const createNewAlbum = async (req, res) => {
     const media_type = getMediaType(firstFile.originalname);
     const cover_url = await uploadToCloudinary(firstFile.buffer, media_type);
     const album = await createAlbum(userId, album_name, description, cover_url);
-   
+
     res.status(201).json({ message: 'Album created', album });
+    
   } catch (error) {
     res.status(500).json({ message: 'Album creation failed', error });
   }
 };
-
 // Get Albums by User
 const getUserAlbums = async (req, res) => {
   try {
