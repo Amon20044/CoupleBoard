@@ -13,8 +13,10 @@ dotenv.config();
 const app = express(); // Declare app
 app.use(cors(
   {
-    origin: process.env.FRONTEND_URL,
-    credentials: true
+    origin: "https://couple-board-web.vercel.app", // Allow your frontend domain
+    methods: ["GET", "POST", "OPTIONS"], // Allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow required headers
+    credentials: true // Allow cookies if needed
   }
 ));
 app.use(express.json());
