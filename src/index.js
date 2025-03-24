@@ -11,11 +11,7 @@ import routes from './routes/index.js';
 dotenv.config();
 
 const app = express(); // Declare app
-app.use(
-  cors({
-    credentials: true, // Allow cookies if needed
-  })
-);
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
