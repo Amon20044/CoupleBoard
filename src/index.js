@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import process from 'process';
+import process, { env } from 'process';
 
 import { errorHandler } from './middlewares/errorHandler.js';
 import routes from './routes/index.js';
@@ -11,7 +11,12 @@ import routes from './routes/index.js';
 dotenv.config();
 
 const app = express(); // Declare app
-app.use(cors());
+app.use(cors(
+  {
+    origin: process.env.FRONTEND_URL,
+    credentials: true
+  }
+));
 app.use(express.json());
 
 app.get('/', (req, res) => {

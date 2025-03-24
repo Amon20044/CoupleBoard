@@ -1,8 +1,6 @@
-import { response } from 'express';
 import { createAlbum, getAlbumsByUser } from '../models/albumModel.js';
 import { uploadToCloudinary } from '../utils/cloudinary.js';
 import { getMediaType } from '../utils/fileTypeChecker.js';
-import { resolve } from 'path';
 
 const createNewAlbum = async (req, res) => {
   try {
