@@ -1,6 +1,4 @@
 import express from 'express';
-import morgan from 'morgan';
-import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import process, { env } from 'process';
@@ -13,7 +11,7 @@ dotenv.config();
 const app = express(); // Declare app
 app.use(cors(
   {
-    origin: "https://couple-board-web.vercel.app", // Allow your frontend domain
+    origin: process.env.FRONTEND_URL, // Allow your frontend domain
     methods: ["GET", "POST", "OPTIONS"], // Allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow required headers
     credentials: true // Allow cookies if needed
