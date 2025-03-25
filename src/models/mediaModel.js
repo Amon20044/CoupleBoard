@@ -4,8 +4,8 @@ import { supabase } from '../utils/db.js';
 const addMedia = async (albumId, mediaUrl, mediaType) => {
   const { data, error } = await supabase
     .from('media')
-    .insert([{ album_id: albumId, media_url: mediaUrl, media_type: mediaType }]);
-  
+    .insert([{ album_id: albumId, media_url: mediaUrl, media_type: mediaType }])
+    .select('*');
   if (error) throw error;
   return data;
 };
