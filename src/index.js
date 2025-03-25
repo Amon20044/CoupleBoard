@@ -9,14 +9,7 @@ import routes from './routes/index.js';
 dotenv.config();
 
 const app = express(); // Declare app
-app.use(cors(
-  {
-    origin: process.env.FRONTEND_URL, // Allow your frontend domain
-    methods: ["GET", "POST", "OPTIONS"], // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow required headers
-    credentials: true // Allow cookies if needed
-  }
-));
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
